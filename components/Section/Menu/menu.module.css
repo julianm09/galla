@@ -1,0 +1,7 @@
+.menu {
+  display: flex;
+  background: #f9f9f9;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}

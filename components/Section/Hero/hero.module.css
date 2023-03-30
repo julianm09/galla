@@ -1,0 +1,106 @@
+.section {
+  display: flex;
+  background: #f9f9f9;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* hero 1 */
+.hero-1 {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0 0 0;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+  min-height: 600px;
+}
+
+.hero-1 .image-container {
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+
+.hero-1 .image {
+  object-fit: cover;
+}
+
+.hero-1 h1 {
+  width: 500px;
+  text-align: left;
+}
+
+.hero-1 p {
+  width: 500px;
+  text-align: left;
+}
+
+.hero-1 .column {
+  width: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 10%;
+}
+
+@media (max-width: 1500px) {
+  .hero-1 {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .hero-1 .column {
+    padding: 0 5%;
+    width: 100%;
+    margin: 0 0 60px 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* hero 1 */
+.hero-2 {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px 0 0 0;
+  color: #f9f9f9;
+  padding: 0 10%;
+  text-align: center;
+  min-height: 600px;
+}
+
+.hero-2 .image-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-2 .image {
+  object-fit: cover;
+  filter: brightness(0.4);
+}
+
+.hero-2 h1 {
+  max-width: 600px;
+  text-align: center;
+}
+
+.hero-2 p {
+  max-width: 600px;
+  text-align: center;
+}
+
+.hero-2 .column {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

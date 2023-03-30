@@ -1,0 +1,121 @@
+.section {
+  display: flex;
+  background: #f9f9f9;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* about 1 */
+.about-1 {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0 0 0;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+  min-height: 600px;
+}
+
+.about-1 .image-container {
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+
+.about-1 .image {
+  object-fit: cover;
+}
+
+.about-1 h2 {
+  width: 500px;
+  text-align: left;
+}
+
+.about-1 p {
+  width: 500px;
+  text-align: left;
+}
+
+.about-1 .column {
+  width: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 10%;
+}
+
+@media (max-width: 1500px) {
+  .about-1 {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .about-1 .column {
+    padding: 0 5%;
+    width: 100%;
+    margin: 0 0 60px 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* about 2 */
+.about-2 {
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0 0 0;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+  min-height: 600px;
+}
+
+.about-2 .image-container {
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+
+.about-2 .image {
+  object-fit: cover;
+}
+
+.about-2 h1 {
+  width: 500px;
+  text-align: left;
+}
+
+.about-2 p {
+  width: 500px;
+  text-align: left;
+}
+
+.about-2 .column {
+  width: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 10%;
+}
+
+@media (max-width: 1500px) {
+  .about-2 {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .about-2 .column {
+    padding: 0 5%;
+    width: 100%;
+    margin: 0 0 60px 0;
+    align-items: center;
+    text-align: center;
+  }
+}
