@@ -21,11 +21,11 @@ export default function About({
       <div className={styles["column"]}>
         <h2>{section.headline}</h2>
         <p>{section.text}</p>
-        <button>Learn More</button>
+        {section.cta && <button>{section.ctaText}</button>}
       </div>
       <div className={styles["image-container"]}>
         <Image
-          src={section.image.regular}
+          src={section.image}
           fill
           alt={section.headline}
           onLoad={() => setLoading(false)}

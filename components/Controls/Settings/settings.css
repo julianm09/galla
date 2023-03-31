@@ -13,8 +13,7 @@
 .tab-container {
   display: flex;
   margin: 0 0 20px 0;
-  width: 100%;
-  grid-gap: 10px;
+  width: 200px;
 }
 
 .tab {
@@ -22,18 +21,11 @@
   z-index: 999;
   cursor: pointer;
   color: #f9f9f9;
-  width: 100%;
+  width: 30px;
   height: 30px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
   background: #333;
-}
-
-.active {
-  background: #666;
-}
-
-.disable {
-  opacity: 0.25;
+  margin: 0 10px 0 0;
 }

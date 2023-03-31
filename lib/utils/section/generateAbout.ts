@@ -41,10 +41,13 @@ const generateAbout = async ({
     headline: cleanHeadline(headline),
     text: text,
     type: "about",
-    image: image1,
+    image: image1.regular,
     layout: layout,
     name: name,
-    description: description, 
+    description: description,
+    imagePrompt: image,
+    cta: true,
+    ctaText: "Learn More"
   };
 
   return section;

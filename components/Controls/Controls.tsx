@@ -3,10 +3,15 @@ import Button from "../Button/Button";
 import Dropdown from "../Dropdown/Dropdown";
 import Input from "../Input/Input";
 import styles from "./controls.module.css";
-import { PlusCircle, Edit as EditIcon } from "react-feather";
+import {
+  PlusCircle,
+  Edit as EditIcon,
+  Settings as SettingsIcon,
+} from "react-feather";
 import TextArea from "../TextArea/TextArea";
 import Edit from "./Edit/Edit";
 import Generate from "./Generate/Generate";
+import Settings from "./Settings/Settings";
 
 export default function Controls({
   name,
@@ -24,7 +29,7 @@ export default function Controls({
   layout,
   setLayout,
   activeSection,
-  temperature, 
+  temperature,
   setTemperature,
   sections,
   setSections,
@@ -45,17 +50,46 @@ export default function Controls({
         <div
           className={`${styles["tab"]} ${
             controls === "edit" && styles["active"]
-          }`}
+          } ${!activeSection && styles["disable"]}`}
           onClick={() => {
-            setControls("edit");
+            activeSection && setControls("edit");
           }}
         >
           <EditIcon size={18} />
+        </div>
+        <div
+          className={`${styles["tab"]} ${
+            controls === "settings" && styles["active"]
+          }`}
+          onClick={() => {
+            setControls("settings");
+          }}
+        >
+          <SettingsIcon size={18} />
         </div>
       </div>
 
       {controls === "edit" && (
         <Edit
+          name={name}
+          setName={setName}
+          description={description}
+          setDescription={setDescription}
+          image={image}
+          setImage={setImage}
+          type={type}
+          handleGenerateSection={handleGenerateSection}
+          loading={loading}
+          controls={controls}
+          setControls={setControls}
+          layout={layout}
+          activeSection={activeSection}
+          sections={sections}
+          setSections={setSections}
+        />
+      )}
+      {controls === "generate" && (
+        <Generate
           name={name}
           setName={setName}
           description={description}
@@ -71,12 +105,13 @@ export default function Controls({
           layout={layout}
           setLayout={setLayout}
           activeSection={activeSection}
-          sections={sections}
-          setSections={setSections}
+          temperature={temperature}
+          setTemperature={setTemperature}
         />
       )}
-      {controls === "generate" && (
-        <Generate
+
+      {controls === "settings" && (
+        <Settings
           name={name}
           setName={setName}
           description={description}

@@ -7,6 +7,7 @@ import TextArea from "../../TextArea/TextArea";
 import { generateText } from "@/lib/utils/openAi/generateText";
 import cleanString from "@/lib/helpers/cleanString";
 import cleanHeadline from "@/lib/helpers/cleanHeadline";
+import { searchImage } from "@/lib/utils/unslpash/searchImage";
 
 export default function Edit({
   name,
@@ -16,21 +17,19 @@ export default function Edit({
   image,
   setImage,
   type,
-  setType,
+
   handleGenerateSection,
   loading,
   controls,
   setControls,
   layout,
-  setLayout,
   activeSection,
   sections,
   setSections,
 }: props) {
-
   const currentSection = sections[activeSection];
 
-  console.log(currentSection)
+  console.log(currentSection);
 
   const handleEditText = (e: any, type: string) => {
     setSections({
@@ -48,7 +47,38 @@ export default function Edit({
     });
     setSections({
       ...sections,
-      [activeSection]: { ...sections[activeSection], [type]: cleanHeadline(response) },
+      [activeSection]: {
+        ...sections[activeSection],
+        [type]: cleanHeadline(response),
+      },
+    });
+  };
+
+  const regenerateImage = async (type: string) => {
+    const response = await searchImage(currentSection.imagePrompt).catch(
+      (err) => {
+        console.log(err);
+        return;
+      }
+    );
+
+    setSections({
+      ...sections,
+      [activeSection]: { ...sections[activeSection], [type]: response.regular },
+    });
+  };
+
+  const setType = async (type: string) => {
+    setSections({
+      ...sections,
+      [activeSection]: { ...sections[activeSection], type: type },
+    });
+  };
+
+  const setLayout = async (layout: string) => {
+    setSections({
+      ...sections,
+      [activeSection]: { ...sections[activeSection], layout: layout },
     });
   };
 
@@ -67,9 +97,15 @@ export default function Edit({
         regenerateText={() => regenerateText("text")}
       />
       <Input
+        label="Call To Action"
+        value={activeSection && sections[activeSection].ctaText}
+        onChange={(e: any) => handleEditText(e, "ctaText")}
+      />
+      <TextArea
         label="Image"
-        value={activeSection && sections[activeSection].image.full}
-        onChange={(e: any) => setImage(e.target.value)}
+        value={activeSection && sections[activeSection].image}
+        onChange={(e: any) => handleEditText(e, "image")}
+        regenerateText={() => regenerateImage("image")}
       />
       <Dropdown
         label="Section Type"
@@ -82,10 +118,9 @@ export default function Edit({
         label="Layout"
         value=""
         type={activeSection && sections[activeSection].layout}
-        setType={setType}
-        options={["1", "2", "3"]}
+        setType={setLayout}
+        options={["1", "2"]}
       />
-      <Button label={loading ? "Loading..." : "Save"} onClick={() => {}} />
     </>
   );
 }
@@ -98,13 +133,11 @@ type props = {
   image: string;
   setImage: React.Dispatch<React.SetStateAction<any>>;
   type: string;
-  setType: React.Dispatch<React.SetStateAction<any>>;
   handleGenerateSection: any;
   loading: boolean;
   controls: string;
   setControls: any;
   layout: string;
-  setLayout: React.Dispatch<React.SetStateAction<any>>;
   activeSection: any;
   sections: any;
   setSections: React.Dispatch<React.SetStateAction<any>>;

@@ -8,12 +8,12 @@ import generateAbout from "@/lib/utils/section/generateAbout";
 
 export default function Builder() {
   const [sections, setSections] = useState({});
-  const [name, setName] = useState("Vancouver Terrerium");
-  const [description, setDescription] = useState("Tererium");
-  const [image, setImage] = useState("Forrest");
+  const [name, setName] = useState("Vancouver Aquarium");
+  const [description, setDescription] = useState("Sushi Restaurant");
+  const [image, setImage] = useState("Sushi");
   const [type, setType] = useState("hero");
   const [loading, setLoading] = useState(false);
-  const [temperature, setTemperature] = useState(0.2);
+  const [temperature, setTemperature] = useState(0.4);
   const [controls, setControls] = useState("generate");
   const [layout, setLayout] = useState("1");
   const [activeSection, setActiveSection] = useState("");

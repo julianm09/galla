@@ -28,7 +28,7 @@ export default function Section({
   return (
     <div
       className={`${styles["section"]}`}
-      onDoubleClick={() => handleEditSection(uid, section)}
+      onClick={() => handleEditSection(uid, section)}
     >
       {activeSection && activeSection === uid && (
         <div className={styles["active"]}></div>
@@ -38,7 +38,7 @@ export default function Section({
           section={section}
           setLoading={setLoading}
           loading={loading}
-          sectionName={sectionName}
+          sectionName={section.type + "-" + section.layout}
         />
       )}
       {section.type === "about" && (
@@ -46,7 +46,7 @@ export default function Section({
           section={section}
           setLoading={setLoading}
           loading={loading}
-          sectionName={sectionName}
+          sectionName={section.type + "-" + section.layout}
         />
       )}
     </div>
