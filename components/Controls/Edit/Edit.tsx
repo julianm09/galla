@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../Button/Button";
 import Dropdown from "../../Dropdown/Dropdown";
 import Input from "../../Input/Input";
@@ -24,6 +24,7 @@ export default function Edit({
   setControls,
   layout,
   activeSection,
+  setActiveSection,
   sections,
   setSections,
 }: props) {
@@ -31,10 +32,31 @@ export default function Edit({
 
   console.log(currentSection);
 
+  const [ctaChecked, setCtaChecked] = useState(false);
+
+  const removeSection = () => {
+    delete sections[activeSection];
+    setSections({
+      ...sections,
+    });
+    setActiveSection("");
+    setControls("generate")
+  };
+
   const handleEditText = (e: any, type: string) => {
     setSections({
       ...sections,
       [activeSection]: { ...sections[activeSection], [type]: e.target.value },
+    });
+  };
+
+  const toggleChecked = (type: string) => {
+    setSections({
+      ...sections,
+      [activeSection]: {
+        ...sections[activeSection],
+        [type]: !sections[activeSection][type],
+      },
     });
   };
 
@@ -100,6 +122,9 @@ export default function Edit({
         label="Call To Action"
         value={activeSection && sections[activeSection].ctaText}
         onChange={(e: any) => handleEditText(e, "ctaText")}
+        checkbox={true}
+        handleCheckbox={() => toggleChecked("cta")}
+        checked={activeSection && sections[activeSection].cta}
       />
       <TextArea
         label="Image"
@@ -121,6 +146,7 @@ export default function Edit({
         setType={setLayout}
         options={["1", "2"]}
       />
+      <Button label={"Remove Section"} onClick={removeSection} secondary/>
     </>
   );
 }
@@ -139,6 +165,7 @@ type props = {
   setControls: any;
   layout: string;
   activeSection: any;
+  setActiveSection: React.Dispatch<React.SetStateAction<any>>;
   sections: any;
   setSections: React.Dispatch<React.SetStateAction<any>>;
 };

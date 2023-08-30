@@ -19,6 +19,7 @@
 }
 
 .hero-1 .image-container {
+  text-align: left;
   position: relative;
   height: 100%;
   width: 50%;
@@ -29,13 +30,11 @@
 }
 
 .hero-1 h1 {
-  width: 500px;
-  text-align: left;
+  max-width: 500px;
 }
 
 .hero-1 p {
-  width: 500px;
-  text-align: left;
+  max-width: 500px;
 }
 
 .hero-1 .column {
@@ -48,18 +47,26 @@
   padding: 0 10%;
 }
 
-@media (max-width: 1500px) {
+@container (max-width: 1500px) {
   .hero-1 {
     flex-direction: column;
-    padding: 0;
+    padding: 100px 0 0 0;
   }
 
   .hero-1 .column {
     padding: 0 5%;
     width: 100%;
-    margin: 0 0 60px 0;
+    margin: 0 0 40px 0;
     align-items: center;
     text-align: center;
+  }
+
+  .hero-1 .image-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    min-width: 500px;
+    min-height: 400px;
   }
 }
 
@@ -103,4 +110,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1500px) {
+  .hero-2 .column {
+    flex-direction: column;
+    padding: 100px 0;
+  }
 }

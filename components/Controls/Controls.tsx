@@ -29,6 +29,7 @@ export default function Controls({
   layout,
   setLayout,
   activeSection,
+  setActiveSection,
   temperature,
   setTemperature,
   sections,
@@ -57,7 +58,7 @@ export default function Controls({
         >
           <EditIcon size={18} />
         </div>
-        <div
+{/*         <div
           className={`${styles["tab"]} ${
             controls === "settings" && styles["active"]
           }`}
@@ -66,7 +67,7 @@ export default function Controls({
           }}
         >
           <SettingsIcon size={18} />
-        </div>
+        </div> */}
       </div>
 
       {controls === "edit" && (
@@ -84,6 +85,7 @@ export default function Controls({
           setControls={setControls}
           layout={layout}
           activeSection={activeSection}
+          setActiveSection={setActiveSection}
           sections={sections}
           setSections={setSections}
         />
@@ -151,6 +153,7 @@ type props = {
   layout: string;
   setLayout: React.Dispatch<React.SetStateAction<any>>;
   activeSection: any;
+  setActiveSection: React.Dispatch<React.SetStateAction<any>>;
   temperature: number;
   setTemperature: React.Dispatch<React.SetStateAction<any>>;
   sections: any;

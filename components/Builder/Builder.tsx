@@ -5,15 +5,16 @@ import Section from "../Section/Section";
 import styles from "./builder.module.css";
 import generateHero from "@/lib/utils/section/generateHero";
 import generateAbout from "@/lib/utils/section/generateAbout";
+import LoadingOverlay from "../LoadingOverlay/LoadingOverlay";
 
 export default function Builder() {
   const [sections, setSections] = useState({});
-  const [name, setName] = useState("Vancouver Aquarium");
-  const [description, setDescription] = useState("Sushi Restaurant");
-  const [image, setImage] = useState("Sushi");
+  const [name, setName] = useState("Modern Canvas");
+  const [description, setDescription] = useState("Interior Design");
+  const [image, setImage] = useState("interior");
   const [type, setType] = useState("hero");
   const [loading, setLoading] = useState(false);
-  const [temperature, setTemperature] = useState(0.4);
+  const [temperature, setTemperature] = useState(0.7);
   const [controls, setControls] = useState("generate");
   const [layout, setLayout] = useState("1");
   const [activeSection, setActiveSection] = useState("");
@@ -69,25 +70,30 @@ export default function Builder() {
   return (
     <>
       <div ref={builderRef} className={styles["builder"]}>
+        {loading && <LoadingOverlay />}
         {sections && Object.entries(sections).length > 0 ? (
-          Object.entries(sections).map((section, i) => (
-            <>
-              <Section
-                uid={section[0]}
-                section={section[1]}
-                loading={loading}
-                setLoading={setLoading}
-                handleEditSection={handleEditSection}
-                activeSection={activeSection}
-              />
-            </>
-          ))
+          <>
+            {Object.entries(sections).map((section, i) => (
+              <>
+                <Section
+                  uid={section[0]}
+                  section={section[1]}
+                  loading={loading}
+                  setLoading={setLoading}
+                  handleEditSection={handleEditSection}
+                  activeSection={activeSection}
+                />
+              </>
+            ))}
+          </>
         ) : (
           <div className={styles["start-screen"]}>
-            Create a section on the right to get started.
+            <h1 className={styles["headline"]}>Welcome to Galla</h1>
+            <p className={styles["intro"]}>A work in progress, AI powered website prototyping tool for designers and developers. Create a section on the right to get started.</p>
           </div>
         )}
       </div>
+
       <Controls
         name={name}
         setName={setName}
@@ -104,6 +110,7 @@ export default function Builder() {
         layout={layout}
         setLayout={setLayout}
         activeSection={activeSection}
+        setActiveSection={setActiveSection}
         temperature={temperature}
         setTemperature={setTemperature}
         sections={sections}

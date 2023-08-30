@@ -31,16 +31,25 @@ export default function Generate({
         label="Name"
         value={name}
         onChange={(e: any) => setName(e.target.value)}
+        checkbox={false}
+        handleCheckbox={() => {}}
+        checked={false}
       />
       <Input
         label="Description"
         value={description}
         onChange={(e: any) => setDescription(e.target.value)}
+        checkbox={false}
+        handleCheckbox={() => {}}
+        checked={false}
       />
       <Input
         label="Image"
         value={image}
         onChange={(e: any) => setImage(e.target.value)}
+        checkbox={false}
+        handleCheckbox={() => {}}
+        checked={false}
       />
       <Dropdown
         label="Section Type"
@@ -56,7 +65,11 @@ export default function Generate({
         setType={setLayout}
         options={["1", "2"]}
       />
-      <SliderInput label="Random" value={temperature} onChange={(e: any) => setTemperature(e.target.value / 100)} />
+      <SliderInput
+        label="Random"
+        value={temperature}
+        onChange={(e: any) => setTemperature(e.target.value / 100)}
+      />
       <Button
         label={loading ? "Loading..." : "Generate"}
         onClick={handleGenerateSection}

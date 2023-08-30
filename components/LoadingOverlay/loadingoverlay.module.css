@@ -1,0 +1,15 @@
+.overlay-container {
+  display: flex;
+  width: calc( 100% - 240px);
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background: rgba(17, 17, 17, 0.80);
+  height: 100vh;
+  color: white;
+  z-index: 999;
+}
+
+.text {
+  margin-right: 10px;
+}
