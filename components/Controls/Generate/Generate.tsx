@@ -73,6 +73,7 @@ export default function Generate({
       <Button
         label={loading ? "Loading..." : "Generate"}
         onClick={handleGenerateSection}
+        secondary={false}
       />
     </>
   );

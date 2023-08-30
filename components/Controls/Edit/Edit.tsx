@@ -146,7 +146,7 @@ export default function Edit({
         setType={setLayout}
         options={["1", "2"]}
       />
-      <Button label={"Remove Section"} onClick={removeSection} secondary/>
+      <Button label={"Remove Section"} onClick={removeSection} secondary={true}/>
     </>
   );
 }

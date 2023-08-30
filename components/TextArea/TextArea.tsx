@@ -13,7 +13,7 @@ export default function TextArea({
     <div className={styles.input}>
       <label>{label}</label>
       <textarea value={value} onChange={onChange}></textarea>
-      {regenerateText && <Button label="Regenerate" onClick={regenerateText}/>}
+      {regenerateText && <Button label="Regenerate" onClick={regenerateText} secondary={false}/>}
     </div>
   );
 }
