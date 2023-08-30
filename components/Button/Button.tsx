@@ -3,7 +3,7 @@ import styles from "./button.module.css";
 export default function Button({
   label = "label",
   onClick = () => {},
-  secondary
+  secondary = false
 }: {
   label: string;
   onClick: any;
