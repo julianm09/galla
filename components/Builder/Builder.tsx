@@ -18,6 +18,7 @@ export default function Builder() {
   const [controls, setControls] = useState("generate");
   const [layout, setLayout] = useState("1");
   const [activeSection, setActiveSection] = useState("");
+  const [error, setError] = useState([]);
 
   //scroll to bottom when section is generated
   const builderRef = useRef<HTMLDivElement>(null);
@@ -40,7 +41,22 @@ export default function Builder() {
         temperature,
         layout,
       });
-      setSections({ ...sections, [uuidv4()]: section });
+
+      if (section?.image && section?.headline && section?.text) {
+        setSections({ ...sections, [uuidv4()]: section });
+      } else {
+        setLoading(false);
+        if (section?.image === undefined) {
+          console.log("was unable to find an image");
+          setError([...error])
+        }
+        if (section?.headline === undefined) {
+          console.log("was unable to generate a headline");
+        }
+        if (section?.text === undefined) {
+          console.log("was unable to generate text");
+        }
+      }
     }
 
     if (type === "about") {
@@ -51,7 +67,12 @@ export default function Builder() {
         temperature,
         layout,
       });
-      setSections({ ...sections, [uuidv4()]: section });
+
+      if (section) {
+        setSections({ ...sections, [uuidv4()]: section });
+      } else {
+        setLoading(false);
+      }
     }
   };
 
@@ -89,7 +110,11 @@ export default function Builder() {
         ) : (
           <div className={styles["start-screen"]}>
             <h1 className={styles["headline"]}>Welcome to Galla</h1>
-            <p className={styles["intro"]}>A work in progress, AI powered website prototyping tool for designers and developers. Create a section on the right to get started.</p>
+            <p className={styles["intro"]}>
+              A work in progress, AI powered website prototyping tool for
+              designers and developers. Create a section on the right to get
+              started.
+            </p>
           </div>
         )}
       </div>

@@ -36,20 +36,20 @@ const generateHero = async ({
     return;
   });
 
-  console.log(image1)
+  console.log(image1);
 
   const section = {
     className: "hero-" + layout,
     headline: cleanHeadline(headline),
     text: text,
     type: "hero",
-    image: image1.regular,
+    image: image1?.regular,
     layout: layout,
     name: name,
     description: description,
     imagePrompt: image,
     cta: true,
-    ctaText: "Contact Us"
+    ctaText: "Contact Us",
   };
 
   return section;
